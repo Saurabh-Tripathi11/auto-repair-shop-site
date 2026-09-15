@@ -1,0 +1,117 @@
+{
+  "domains": ["vaughnauto.com", "www.vaughnauto.com"],
+
+  "business": {
+    "name": "Vaughn Auto Service",
+    "initials": "VA",
+    "city": "Austin",
+    "region": "TX",
+    "phone": "(512) 555-0147",
+    "timezone": "America/Chicago",
+    "address": {
+      "street": "1420 E Riverside Dr",
+      "city": "Austin",
+      "region": "TX",
+      "postalCode": "78741",
+      "country": "US"
+    },
+    "crossStreet": "Between Pleasant Valley and Burton, next to the tire shop. Park in back.",
+    "openedYear": 2004,
+    "priceRange": "$$",
+    "licenseLine": "TX inspection station #TX-0198442",
+    "warranty": "24 month / 24,000 mile",
+    "serviceArea": "Austin, Riverside, Montopolis, Del Valle, Sunset Valley, South Congress, Pflugerville and Round Rock. Free tow within 8 miles on repairs over $400.",
+    "reviewsUrl": "https://www.google.com/search?q=Vaughn+Auto+Service+Austin+reviews"
+  },
+
+  "hours": {
+    "short": "Mon–Fri 7:30–6, Sat 8–2",
+    "rows": [
+      { "day": "Mon – Fri", "time": "7:30am – 6:00pm" },
+      { "day": "Saturday", "time": "8:00am – 2:00pm" },
+      { "day": "Sunday", "time": "Closed" }
+    ],
+    "schema": ["Mo-Fr 07:30-18:00", "Sa 08:00-14:00"]
+  },
+
+  "rating": { "value": "4.8", "count": 127 },
+
+  "badges": [
+    "ASE Certified",
+    "ASE Master Technician",
+    "NAPA AutoCare Center",
+    "AAA Approved Repair",
+    "BBB Accredited A+"
+  ],
+
+  "services": [
+    { "name": "Brake repair", "price": "from $189", "line": "Pads, rotors, calipers and lines. We measure what's left and send you the photo." },
+    { "name": "Oil & filter change", "price": "from $59", "line": "Conventional or full synthetic, with a 20-point look-over. About 30 minutes." },
+    { "name": "Check-engine diagnostics", "price": "$110", "line": "Traced to the actual cause, not a guessed part. Free when we do the repair." },
+    { "name": "A/C repair", "price": "from $149", "line": "Leak test, recharge, compressors and condensers. Same-day on most of it." },
+    { "name": "Transmission service", "price": "quoted", "line": "Fluid and filter, slipping, hard shifts, and full rebuilds with a 3-year warranty." },
+    { "name": "Texas state inspection", "price": "$25.50", "line": "Official station. Walk in, no appointment, usually out in 20 minutes." }
+  ],
+
+  "special": {
+    "eyebrow": "This month",
+    "title": "$25 off any brake job",
+    "body": "Mention the website when you call. Includes the inspection and the road test.",
+    "fine": "One per vehicle, through the end of the month."
+  },
+
+  "cards": [
+    { "title": "Big repair? You can pay it out.", "body": "Snap Finance and Synchrony Car Care, approved in about 60 seconds at the counter. 6 months interest-free on repairs over $299." },
+    { "title": "While it's here", "body": "Free local shuttle inside 5 miles, loaner car for jobs over two days, and after-hours key drop at the front door." }
+  ],
+
+  "owner": {
+    "name": "Rick Vaughn",
+    "title": "Owner",
+    "note": "I opened this shop in 2004 after eleven years at a Ford dealer, and most of the people who come in now were sent by somebody we already fixed a car for. That only works if we tell people the truth about what their car needs — including when it doesn't need anything. If you've been quoted something you're not sure about, bring the estimate in and I'll look at it with you.",
+    "photo": "https://images.unsplash.com/photo-1676018366904-c083ed678e60?auto=format&fit=crop&w=600&q=70",
+    "photoAlt": "Technician working on a car in the shop"
+  },
+
+  "reasons": [
+    { "title": "You see it before we fix it", "body": "We text a photo or short video of the worn part with the price next to it and wait for your yes." },
+    { "title": "The estimate is the bill", "body": "If we find something else under there, we stop and call you before spending another dollar." },
+    { "title": "We'll tell you it can wait", "body": "Plenty of things are fine another year. You'll hear that from us more than you're used to." }
+  ],
+
+  "reviews": [
+    { "name": "Marisol R.", "vehicle": "2018 CR-V", "when": "2 months ago", "text": "Dealer quoted $1,900 for rear brakes and a transmission flush. Vaughn did the brakes for $640 and told me the transmission was fine — sent photos of both." },
+    { "name": "Dale W.", "vehicle": "2007 F-150", "when": "5 months ago", "text": "Check engine light nobody else could figure out. They found a cracked vacuum line in about an hour and only charged me for the hour." },
+    { "name": "Priya N.", "vehicle": "2014 Corolla", "when": "3 weeks ago", "text": "A/C died in July. In the next morning, leaking condenser, done by 4pm. And somebody actually calls you back when they say they will." }
+  ],
+
+  "photos": {
+    "hero": "https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&fit=crop&w=1400&q=70",
+    "heroAlt": "Cars up on the lifts in the service bay",
+    "gallery": [
+      { "src": "https://images.unsplash.com/photo-1702146713858-8e7d1cc29fe8?auto=format&fit=crop&w=800&q=70", "alt": "Car on a lift", "cap": "Every car goes on the lift for a look underneath" },
+      { "src": "https://images.unsplash.com/photo-1618312980096-873bd19759a0?auto=format&fit=crop&w=800&q=70", "alt": "The shop's service bays", "cap": "Two bays and off-street parking in back" },
+      { "src": "https://images.unsplash.com/photo-1702146713922-613313be011d?auto=format&fit=crop&w=800&q=70", "alt": "Brake and suspension work in progress", "cap": "Brakes, tires and suspension in-house" }
+    ]
+  },
+
+  "map": {
+    "bbox": "-97.7440%2C30.2380%2C-97.7080%2C30.2560",
+    "marker": "30.2470%2C-97.7260"
+  },
+
+  "copy": {
+    "headline": "Brakes, engines and A/C — fixed right, usually the same day",
+    "tagline": "Independent shop on East Riverside. ASE certified techs, written estimates before we start, and a text with photos so you can see what we found.",
+    "heroFinePrint": "Walk-ins welcome for inspections · After-hours key drop at the front door",
+    "servicesLede": "Starting prices below are real. You get a written estimate before anything gets taken apart, and a call if we find something the estimate didn't cover.",
+    "footerCredentials": "ASE certified technicians · 24 month / 24,000 mile warranty"
+  },
+
+  "forms": { "endpoint": "" },
+
+  "seo": {
+    "description": "Independent auto repair shop on East Riverside in Austin. Brakes, engine diagnostics, A/C, transmission and Texas state inspections. ASE certified. Call (512) 555-0147.",
+    "canonical": "https://vaughnauto.com/"
+  }
+}

@@ -1,0 +1,77 @@
+# Builds every tenant with `shopfront` and publishes dist/ to GitHub Pages.
+#
+# dist/index.html (written by platform/build.js) becomes the site root -- a
+# directory page linking to each tenant's own folder, e.g.:
+#   https://demo.sachintripathi.com/vaughn-auto/
+#   https://demo.sachintripathi.com/northline-collision/
+#   https://demo.sachintripathi.com/pacific-euro/
+#
+# Requirements this workflow cannot set up by itself:
+#   1. The repo must be public, or on a GitHub plan with private Pages.
+#   2. DNS: a CNAME record for the custom domain below, pointed at
+#      <owner>.github.io (see README's Deploying section for the exact record).
+# Given those, `configure-pages` enables Pages on first run -- no separate
+# manual toggle in Settings needed.
+#
+# To point this at a different domain, change CUSTOM_DOMAIN below (or delete
+# that env and the "Write CNAME" step to publish to the default
+# <owner>.github.io/<repo>/ URL instead).
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {} # lets you deploy from any branch via the Actions tab, before merging to main
+
+env:
+  CUSTOM_DOMAIN: demo.sachintripathi.com
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; a new push cancels an in-flight one rather
+# than queuing behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Zero dependencies -- no install step. `npm run check` fails the run on
+      # a real config or contrast error before anything is published.
+      - run: npm run check
+      - run: npm run build
+
+      - name: Bypass Jekyll processing
+        run: touch dist/.nojekyll
+
+      - name: Write CNAME for the custom domain
+        if: env.CUSTOM_DOMAIN != ''
+        run: echo "$CUSTOM_DOMAIN" > dist/CNAME
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

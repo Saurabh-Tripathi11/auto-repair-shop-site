@@ -1,0 +1,16 @@
+/* Pacific Euro — the last word on this tenant's CSS.
+   Emitted after every section's styles, so anything here wins without
+   touching the platform or overriding a whole section. */
+
+/* Square corners everywhere, including the inputs and the map frame that take
+   their radius from a token this tenant has already zeroed. */
+.map-frame, .booking-form input, .booking-form textarea { border-radius: 0; }
+
+/* The service list is the page for a shop whose customers arrive holding a
+   dealer quote, so it gets a heavier rule and more air. */
+.services-col { border-top-width: 3px; }
+.svc { padding: 18px 0; }
+.svc-price { font-variant-numeric: tabular-nums; }
+
+/* Marque names in the trust bar read better tracked out slightly. */
+.trust-badge { letter-spacing: 0.03em; text-transform: uppercase; font-size: 12px; }

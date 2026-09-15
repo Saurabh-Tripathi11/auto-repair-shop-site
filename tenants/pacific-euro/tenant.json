@@ -1,0 +1,238 @@
+{
+  "domains": [
+    "pacificeuro.com",
+    "www.pacificeuro.com",
+    "pacificeuromotors.com"
+  ],
+  "layout": [
+    "utility-strip",
+    "header",
+    "hero",
+    "trust-bar",
+    "services",
+    "specials",
+    "owner",
+    "gallery",
+    "reviews",
+    "location",
+    "booking",
+    "footer",
+    {
+      "use": "call-bar",
+      "options": {
+        "mode": "always"
+      }
+    }
+  ],
+  "nav": [
+    {
+      "label": "Servicing",
+      "href": "#services"
+    },
+    {
+      "label": "Reviews",
+      "href": "#reviews"
+    },
+    {
+      "label": "Hours",
+      "href": "#location"
+    },
+    {
+      "label": "Book",
+      "href": "#book"
+    }
+  ],
+  "business": {
+    "name": "Pacific Euro Motors",
+    "initials": "PE",
+    "city": "Seattle",
+    "region": "WA",
+    "phone": "(206) 555-0119",
+    "timezone": "America/Los_Angeles",
+    "address": {
+      "street": "915 S Dearborn St",
+      "city": "Seattle",
+      "region": "WA",
+      "postalCode": "98134",
+      "country": "US"
+    },
+    "crossStreet": "Under the Jose Rizal bridge, second driveway past the paint supplier. Customer parking is the row against the wall.",
+    "openedYear": 2011,
+    "priceRange": "$$$",
+    "licenseLine": "WA emissions specialist #WA-ES-30914",
+    "warranty": "3 year / 36,000 mile",
+    "serviceArea": "Seattle, Bellevue, Kirkland, Renton, Shoreline and Mercer Island. Loaner cars for anything over a day.",
+    "reviewsUrl": "https://www.google.com/search?q=Pacific+Euro+Motors+Seattle+reviews"
+  },
+  "hours": {
+    "short": "Mon–Fri 8–5",
+    "showOpenNow": true,
+    "rows": [
+      {
+        "day": "Mon – Fri",
+        "time": "8:00am – 5:00pm"
+      },
+      {
+        "day": "Saturday",
+        "time": "Closed"
+      },
+      {
+        "day": "Sunday",
+        "time": "Closed"
+      }
+    ],
+    "schema": [
+      "Mo-Fr 08:00-17:00"
+    ]
+  },
+  "rating": {
+    "value": "4.9",
+    "count": 86
+  },
+  "badges": [
+    "Bosch Car Service",
+    "ASE Master Technician",
+    "WA Emissions Specialist"
+  ],
+  "services": [
+    {
+      "name": "Scheduled maintenance",
+      "price": "from $340",
+      "line": "Factory intervals for BMW, Mercedes, Audi and VW, stamped in your book. Dealer schedule, independent labour rate."
+    },
+    {
+      "name": "Diagnostics",
+      "price": "$165",
+      "line": "ISTA, ODIS and XENTRY in-house. One hour, and we tell you what the code actually means for your car."
+    },
+    {
+      "name": "Timing chain & guides",
+      "price": "quoted",
+      "line": "The N20 and N63 jobs the dealer quotes five figures for. We have done several hundred."
+    },
+    {
+      "name": "Suspension & air struts",
+      "price": "from $780",
+      "line": "Air suspension, control arms and bushings. We rebuild the compressor rather than replacing the unit where it is sound."
+    },
+    {
+      "name": "Pre-purchase inspection",
+      "price": "$220",
+      "line": "Two hours, on a lift, with a written report and photos. Worth it on anything German and out of warranty."
+    },
+    {
+      "name": "Emissions & registration",
+      "price": "$65",
+      "line": "Certified specialist. If it fails, the diagnostic fee comes off the repair."
+    }
+  ],
+  "cards": [
+    {
+      "title": "Dealer schedule, independent rate",
+      "body": "We stamp the service book to the factory interval with factory-spec fluids and parts. Your warranty and your resale value are unaffected."
+    },
+    {
+      "title": "While it's here",
+      "body": "A loaner for anything over a day, booked when you book the job. Light rail is four minutes' walk if you would rather not wait."
+    }
+  ],
+  "owner": {
+    "name": "Anders Røed",
+    "title": "Owner, ASE Master",
+    "note": "I spent nine years at the BMW dealer on Airport Way before opening this place in 2011, and half the cars in the shop today are ones the dealer quoted and the owner wanted a second opinion on. I will give you that second opinion honestly, which sometimes means telling you the dealer was right. If the quote you are holding is for a timing chain, bring it in — I will show you on the lift what is actually worn."
+  },
+  "reasons": [
+    {
+      "title": "We show you on the lift",
+      "body": "You are welcome under the car with us. Most people take the photos we send instead, which is fine too."
+    },
+    {
+      "title": "Factory tooling, honest labour",
+      "body": "The same diagnostic software the dealer runs, at an independent shop's hourly rate."
+    },
+    {
+      "title": "We will tell you it can wait",
+      "body": "German cars generate long service lists. Plenty of the items on yours are fine for another year, and we will say which."
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Ilse K.",
+      "vehicle": "2015 328i",
+      "when": "3 months ago",
+      "text": "Dealer quoted $6,800 for a timing chain. Anders put it on the lift, showed me the guide wear was nowhere near failure, and did the oil filter housing leak that was actually causing the noise for $740."
+    },
+    {
+      "name": "Devon P.",
+      "vehicle": "2018 Q5",
+      "when": "7 weeks ago",
+      "text": "Pre-purchase inspection saved me from a car with a repaired frame rail nobody had disclosed. Two hours and a twenty-page report with photos. Cheapest $220 I have ever spent."
+    },
+    {
+      "name": "Marguerite A.",
+      "vehicle": "2013 E350",
+      "when": "5 months ago",
+      "text": "Air suspension went down on one corner. They rebuilt the compressor instead of selling me the $2,100 replacement unit and it has been level for a year and a half."
+    }
+  ],
+  "photos": {
+    "hero": "https://images.unsplash.com/photo-1702146713922-613313be011d?auto=format&fit=crop&w=1400&q=70",
+    "heroAlt": "Suspension work in progress on the lift",
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1618312980096-873bd19759a0?auto=format&fit=crop&w=800&q=70",
+        "alt": "The shop's service bays",
+        "cap": "Two bays, factory diagnostic tooling in both"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&fit=crop&w=800&q=70",
+        "alt": "Cars up on the lifts in the service bay",
+        "cap": "Every car goes on the lift for a full look underneath"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1676018366904-c083ed678e60?auto=format&fit=crop&w=800&q=70",
+        "alt": "Technician working on a car in the shop",
+        "cap": "ISTA, ODIS and XENTRY, run in-house"
+      }
+    ]
+  },
+  "map": {
+    "bbox": "-122.3340%2C47.5880%2C-122.3080%2C47.6000",
+    "marker": "47.5940%2C-122.3210"
+  },
+  "copy": {
+    "heroEyebrow": "BMW · Mercedes-Benz · Audi · Volkswagen · Porsche",
+    "headline": "The second opinion on your dealer quote",
+    "tagline": "Independent German specialist in SODO. Factory diagnostic software, factory service intervals, and a technician who will show you the worn part on the lift before he replaces it.",
+    "heroFinePrint": "Loaner cars booked with the job · Light rail four minutes' walk",
+    "servicesHeading": "What we service",
+    "servicesLede": "Prices are for a four-cylinder in ordinary condition. Anything that needs a look before it can be quoted, we say so rather than guessing low.",
+    "ownerHeading": "How we work",
+    "reviewsHeading": "What owners say",
+    "reviewsLink": "Read all 86 reviews on Google",
+    "bookingHeading": "Book the car in",
+    "bookingLede": "Four things and we'll call you back, usually the same day.",
+    "bookingEscape": "If a warning light is red or the car is overheating, don't fill this out — call",
+    "bookingEscapeTail": "before you drive it any further.",
+    "trustNote": "Independent since 2011 · 3 year / 36,000 mile warranty on parts & labour",
+    "footerCredentials": "ASE Master technicians · 3 year / 36,000 mile warranty"
+  },
+  "forms": {
+    "endpoint": ""
+  },
+  "seo": {
+    "description": "Independent BMW, Mercedes, Audi and VW specialist in Seattle. Factory diagnostics, scheduled maintenance, timing chains and pre-purchase inspections. Call (206) 555-0119.",
+    "canonical": "https://pacificeuro.com/"
+  },
+  "extra": {
+    "marques": [
+      "BMW",
+      "Mercedes-Benz",
+      "Audi",
+      "Volkswagen",
+      "Porsche",
+      "MINI",
+      "Volvo"
+    ]
+  }
+}
