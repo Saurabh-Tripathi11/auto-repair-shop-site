@@ -195,29 +195,38 @@ static host works — each `dist/<slug>/` is a complete site root, with its own
 ### As one demo link (GitHub Pages)
 
 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) runs
-`npm run check` and `npm run build`, then rearranges `dist/` before publishing
-it: one tenant (`ROOT_TENANT` in the workflow's env block) is promoted to the
-bare domain, and the directory page `npm run build` writes to `dist/index.html`
-moves to `CHECK_PATH` instead, so it stays reachable without sitting at the
-root:
+`npm run check` and `npm run build`, then moves the directory page `npm run
+build` writes to `dist/index.html` over to `CHECK_PATH` instead, leaving the
+bare root with no `index.html` at all — every page is reached by an explicit
+path, never by landing on the root:
 
 ```
-https://<your-domain>/                     ROOT_TENANT's own page
-https://<your-domain>/vaughn-auto/         every tenant still at its own
-https://<your-domain>/northline-collision/ path too, unchanged
+https://<your-domain>/                     nothing (404), on purpose
+https://<your-domain>/vaughn-auto/         every tenant at its own path,
+https://<your-domain>/northline-collision/ exactly as npm run build wrote it
 https://<your-domain>/pacific-euro/
 https://<your-domain>/mai/sachin/hoon/     the directory of all tenants
 ```
 
-Change `ROOT_TENANT` or `CHECK_PATH` at the top of the workflow to pick a
-different tenant or move the directory page elsewhere. This rearranging step
-is GitHub-Pages-demo-only — `npm run build` itself is untouched, and still
-just writes `dist/<slug>/` per tenant plus the directory page.
+A custom domain is an alternate hostname for the same published files, not a
+second site, so this structure is identical on `demo.sachintripathi.com` and
+on the default `<owner>.github.io/<repo>/` URL — the same 404 at root, the
+same tenant paths, just with `/<repo>/` prefixed on the default domain (see
+below). Change `CHECK_PATH` at the top of the workflow to move the directory
+page elsewhere. This one move is GitHub-Pages-demo-only — `npm run build`
+itself is untouched, and still just writes `dist/<slug>/` per tenant plus the
+directory page.
 
 This is a showcase link, not a production deployment for a real shop — every
-tenant other than `ROOT_TENANT` is reachable by path, not by its own domain,
-because GitHub Pages binds at most one custom domain per repo. A tenant that
-goes live for real gets its own domain via the `Caddyfile` route above instead.
+tenant is reachable by path here, not by its own domain, because GitHub Pages
+binds at most one custom domain per repo. A tenant that goes live for real
+gets its own domain via the `Caddyfile` route above instead.
+
+**The `/<repo>/` prefix on the default domain can't be removed** without
+renaming this repo to exactly `<owner>.github.io` — that's the one repo name
+GitHub Pages treats as the account's root site with no prefix; every other
+name gets `<owner>.github.io/<reponame>/...` unconditionally. Not done here
+since it changes the repo's canonical identity — ask if you want that.
 
 Setup, once:
 

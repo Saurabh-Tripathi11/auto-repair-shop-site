@@ -1,14 +1,27 @@
 # Builds every tenant with `shopfront` and publishes dist/ to GitHub Pages.
 #
 # `platform/build.js` writes each tenant to dist/<slug>/ plus a directory page
-# at dist/index.html. This workflow rearranges that afterward, GitHub-Pages-
-# demo-only, and doesn't change what `npm run build` itself produces:
+# at dist/index.html. This workflow moves that directory page to CHECK_PATH
+# afterward, GitHub-Pages-demo-only -- it doesn't change what `npm run build`
+# itself produces. The bare root ends up with no index.html at all, so it 404s
+# on purpose: every page is reached by an explicit path, never by landing on
+# the root.
 #
-#   https://demo.sachintripathi.com/               ROOT_TENANT's own page
-#   https://demo.sachintripathi.com/vaughn-auto/    every tenant still at its
-#   https://demo.sachintripathi.com/pacific-euro/   own path too, unchanged
-#   https://demo.sachintripathi.com/CHECK_PATH/     the directory page, moved
-#                                                    here from dist/index.html
+# This is the same site under two hostnames, not two sites -- a custom domain
+# is an alternate name for the exact same published files, so the same
+# structure applies on both:
+#
+#   https://demo.sachintripathi.com/                              nothing (404)
+#   https://demo.sachintripathi.com/vaughn-auto/                  tenant page
+#   https://demo.sachintripathi.com/pacific-euro/                 tenant page
+#   https://demo.sachintripathi.com/CHECK_PATH/                   directory of all tenants
+#   https://<owner>.github.io/<repo>/                              nothing (404)
+#   https://<owner>.github.io/<repo>/vaughn-auto/                  tenant page
+#   https://<owner>.github.io/<repo>/CHECK_PATH/                   directory of all tenants
+#
+# The <repo> segment in the second group can't be removed without renaming
+# this repo to exactly <owner>.github.io -- GitHub Pages hard-codes that,
+# it isn't a setting either of these workflows can override.
 #
 # Requirements this workflow cannot set up by itself:
 #   1. The repo must be public, or on a GitHub plan with private Pages.
@@ -32,7 +45,6 @@ on:
 
 env:
   CUSTOM_DOMAIN: demo.sachintripathi.com
-  ROOT_TENANT: vaughn-auto # which tenant's page loads at the bare domain
   CHECK_PATH: mai/sachin/hoon # where the all-tenants directory page moves to
 
 permissions:
@@ -61,13 +73,13 @@ jobs:
       - run: npm run check
       - run: npm run build
 
-      - name: Promote ROOT_TENANT to the site root, move the directory page to CHECK_PATH
+      # Leaves dist/ with no index.html at all, so the bare root 404s on
+      # purpose -- every page from here on is reached by an explicit path.
+      - name: Move the directory page to CHECK_PATH
         run: |
           set -e
-          test -d "dist/$ROOT_TENANT" || { echo "::error::ROOT_TENANT '$ROOT_TENANT' has no dist/$ROOT_TENANT -- check the tenant slug"; exit 1; }
           mkdir -p "dist/$CHECK_PATH"
           mv dist/index.html "dist/$CHECK_PATH/index.html"
-          cp -r "dist/$ROOT_TENANT/." dist/
 
       - name: Bypass Jekyll processing
         run: touch dist/.nojekyll
