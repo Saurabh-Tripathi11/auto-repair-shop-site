@@ -216,7 +216,11 @@ Setup, once:
 1. **Make the repo public**, or be on a GitHub plan with private-repo Pages —
    the free tier only serves Pages from public repos. Settings → General →
    Danger Zone → Change visibility.
-2. **Point a domain at it.** Pick a subdomain you're not using for anything
+2. **Turn Pages on**, once: Settings → Pages → Build and deployment → Source →
+   **"GitHub Actions"**. The workflow deploys to a Pages site; it can't create
+   one — that needs an admin-level token the default `GITHUB_TOKEN` is
+   deliberately not given, so this one click has no workflow-side substitute.
+3. **Point a domain at it.** Pick a subdomain you're not using for anything
    else (an apex domain replaces whatever is currently live at its root).
    At your DNS provider, add:
    ```
@@ -224,14 +228,12 @@ Setup, once:
    ```
    This is the same target for a project's Pages site regardless of the repo's
    name — GitHub routes by matching the domain each repo has configured.
-3. Push to `main` (or run the workflow manually from the Actions tab —
+4. Push to `main` (or run the workflow manually from the Actions tab —
    "Deploy to GitHub Pages" → Run workflow — to deploy before merging). It
    writes a `CNAME` file into `dist/` from `CUSTOM_DOMAIN` at the top of the
    workflow; change that value to use a different domain, or delete it and
    that step to publish to the default `<username>.github.io/<repo>/` instead.
-   `configure-pages` turns Pages on for the repo on first run — no separate
-   Settings toggle needed.
-4. HTTPS provisions itself once DNS resolves and GitHub verifies the domain —
+5. HTTPS provisions itself once DNS resolves and GitHub verifies the domain —
    typically minutes, occasionally longer. Settings → Pages shows the status.
 
 ### For real, per tenant

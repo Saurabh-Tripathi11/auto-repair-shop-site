@@ -60,13 +60,15 @@ jobs:
         if: env.CUSTOM_DOMAIN != ''
         run: echo "$CUSTOM_DOMAIN" > dist/CNAME
 
-      # enablement: true is required -- configure-pages defaults to expecting
-      # a Pages site that already exists, and fails with "Get Pages site
-      # failed... Not Found" on a repo where Pages has never been turned on.
-      # This makes that a one-time API call instead of a manual Settings step.
+      # This step deploys to a Pages site; it cannot create one. Creating the
+      # site the first time needs an admin-level token the default
+      # GITHUB_TOKEN is deliberately not given, even with `pages: write` and
+      # `enablement: true` here -- that combination fails with "Resource not
+      # accessible by integration". The one-time fix is a manual Settings
+      # step, not a workflow one: Settings -> Pages -> Build and deployment ->
+      # Source -> "GitHub Actions". Do that once; every run after (this one
+      # included) needs nothing further.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
