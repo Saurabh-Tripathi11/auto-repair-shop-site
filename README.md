@@ -190,6 +190,62 @@ static host works — each `dist/<slug>/` is a complete site root, with its own
 
 ---
 
+## Deploying
+
+### As one demo link (GitHub Pages)
+
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) runs
+`npm run check` and `npm run build`, then publishes `dist/` to GitHub Pages.
+`dist/index.html` — the directory page `npm run build` already writes — becomes
+the site root, so one link shows every tenant:
+
+```
+https://<your-domain>/                     directory of tenants
+https://<your-domain>/vaughn-auto/
+https://<your-domain>/northline-collision/
+https://<your-domain>/pacific-euro/
+```
+
+This is a showcase link, not a production deployment for a real shop — every
+tenant is reachable by path, not by its own domain, because GitHub Pages binds
+at most one custom domain per repo. A tenant that goes live for real gets its
+own domain via the `Caddyfile` route above instead.
+
+Setup, once:
+
+1. **Make the repo public**, or be on a GitHub plan with private-repo Pages —
+   the free tier only serves Pages from public repos. Settings → General →
+   Danger Zone → Change visibility.
+2. **Point a domain at it.** Pick a subdomain you're not using for anything
+   else (an apex domain replaces whatever is currently live at its root).
+   At your DNS provider, add:
+   ```
+   Type: CNAME   Host: demo   Value: <your-github-username>.github.io
+   ```
+   This is the same target for a project's Pages site regardless of the repo's
+   name — GitHub routes by matching the domain each repo has configured.
+3. Push to `main` (or run the workflow manually from the Actions tab —
+   "Deploy to GitHub Pages" → Run workflow — to deploy before merging). It
+   writes a `CNAME` file into `dist/` from `CUSTOM_DOMAIN` at the top of the
+   workflow; change that value to use a different domain, or delete it and
+   that step to publish to the default `<username>.github.io/<repo>/` instead.
+   `configure-pages` turns Pages on for the repo on first run — no separate
+   Settings toggle needed.
+4. HTTPS provisions itself once DNS resolves and GitHub verifies the domain —
+   typically minutes, occasionally longer. Settings → Pages shows the status.
+
+### For real, per tenant
+
+Each `dist/<slug>/` is a complete, dependency-free static site. Deploy it
+anywhere that serves static files, on the tenant's own domain: the `Caddyfile`
+`npm run build` writes covers a VPS with automatic TLS, or point any static
+host (Netlify, Vercel, S3 + CloudFront, Cloudflare Pages) at that one
+directory. This is the path for a shop that needs `vaughnauto.com` to actually
+be `vaughnauto.com` — GitHub Pages' one-domain-per-repo limit means the demo
+setup above can't do that for more than one tenant at a time.
+
+---
+
 ## `npm run check`
 
 The guard rail that makes self-serve theming safe. Errors fail the run;
