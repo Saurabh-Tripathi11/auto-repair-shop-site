@@ -1,17 +1,23 @@
 # Builds every tenant with `shopfront` and publishes dist/ to GitHub Pages.
 #
-# dist/index.html (written by platform/build.js) becomes the site root -- a
-# directory page linking to each tenant's own folder, e.g.:
-#   https://demo.sachintripathi.com/vaughn-auto/
-#   https://demo.sachintripathi.com/northline-collision/
-#   https://demo.sachintripathi.com/pacific-euro/
+# `platform/build.js` writes each tenant to dist/<slug>/ plus a directory page
+# at dist/index.html. This workflow rearranges that afterward, GitHub-Pages-
+# demo-only, and doesn't change what `npm run build` itself produces:
+#
+#   https://demo.sachintripathi.com/               ROOT_TENANT's own page
+#   https://demo.sachintripathi.com/vaughn-auto/    every tenant still at its
+#   https://demo.sachintripathi.com/pacific-euro/   own path too, unchanged
+#   https://demo.sachintripathi.com/CHECK_PATH/     the directory page, moved
+#                                                    here from dist/index.html
 #
 # Requirements this workflow cannot set up by itself:
 #   1. The repo must be public, or on a GitHub plan with private Pages.
 #   2. DNS: a CNAME record for the custom domain below, pointed at
 #      <owner>.github.io (see README's Deploying section for the exact record).
-# Given those, `configure-pages` enables Pages on first run -- no separate
-# manual toggle in Settings needed.
+#   3. Pages must be turned on once, manually: Settings -> Pages -> Build and
+#      deployment -> Source -> "GitHub Actions". The default GITHUB_TOKEN
+#      can deploy to a Pages site but can't create one -- that needs
+#      administration-level access GitHub deliberately withholds from it.
 #
 # To point this at a different domain, change CUSTOM_DOMAIN below (or delete
 # that env and the "Write CNAME" step to publish to the default
@@ -26,6 +32,8 @@ on:
 
 env:
   CUSTOM_DOMAIN: demo.sachintripathi.com
+  ROOT_TENANT: vaughn-auto # which tenant's page loads at the bare domain
+  CHECK_PATH: mai/sachin/hoon # where the all-tenants directory page moves to
 
 permissions:
   contents: read
@@ -52,6 +60,14 @@ jobs:
       # a real config or contrast error before anything is published.
       - run: npm run check
       - run: npm run build
+
+      - name: Promote ROOT_TENANT to the site root, move the directory page to CHECK_PATH
+        run: |
+          set -e
+          test -d "dist/$ROOT_TENANT" || { echo "::error::ROOT_TENANT '$ROOT_TENANT' has no dist/$ROOT_TENANT -- check the tenant slug"; exit 1; }
+          mkdir -p "dist/$CHECK_PATH"
+          mv dist/index.html "dist/$CHECK_PATH/index.html"
+          cp -r "dist/$ROOT_TENANT/." dist/
 
       - name: Bypass Jekyll processing
         run: touch dist/.nojekyll

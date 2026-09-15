@@ -195,21 +195,29 @@ static host works — each `dist/<slug>/` is a complete site root, with its own
 ### As one demo link (GitHub Pages)
 
 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) runs
-`npm run check` and `npm run build`, then publishes `dist/` to GitHub Pages.
-`dist/index.html` — the directory page `npm run build` already writes — becomes
-the site root, so one link shows every tenant:
+`npm run check` and `npm run build`, then rearranges `dist/` before publishing
+it: one tenant (`ROOT_TENANT` in the workflow's env block) is promoted to the
+bare domain, and the directory page `npm run build` writes to `dist/index.html`
+moves to `CHECK_PATH` instead, so it stays reachable without sitting at the
+root:
 
 ```
-https://<your-domain>/                     directory of tenants
-https://<your-domain>/vaughn-auto/
-https://<your-domain>/northline-collision/
+https://<your-domain>/                     ROOT_TENANT's own page
+https://<your-domain>/vaughn-auto/         every tenant still at its own
+https://<your-domain>/northline-collision/ path too, unchanged
 https://<your-domain>/pacific-euro/
+https://<your-domain>/mai/sachin/hoon/     the directory of all tenants
 ```
+
+Change `ROOT_TENANT` or `CHECK_PATH` at the top of the workflow to pick a
+different tenant or move the directory page elsewhere. This rearranging step
+is GitHub-Pages-demo-only — `npm run build` itself is untouched, and still
+just writes `dist/<slug>/` per tenant plus the directory page.
 
 This is a showcase link, not a production deployment for a real shop — every
-tenant is reachable by path, not by its own domain, because GitHub Pages binds
-at most one custom domain per repo. A tenant that goes live for real gets its
-own domain via the `Caddyfile` route above instead.
+tenant other than `ROOT_TENANT` is reachable by path, not by its own domain,
+because GitHub Pages binds at most one custom domain per repo. A tenant that
+goes live for real gets its own domain via the `Caddyfile` route above instead.
 
 Setup, once:
 
