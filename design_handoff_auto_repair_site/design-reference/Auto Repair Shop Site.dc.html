@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#fff; }
+  * { box-sizing:border-box; }
+  a { color:#0f4c81; }
+  a:hover { color:#0a3457; }
+  input, textarea, button, select { font-family:inherit; font-size:16px; }
+</style>
+</helmet>
+
+<div style="background:#fff; color:#1c2229; font-family:'Public Sans',Helvetica,Arial,sans-serif; font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; padding-bottom:74px; overflow-x:hidden">
+
+  <div style="background:#0b2136; color:#b9cadb; font-size:13.5px">
+    <div style="max-width:1140px; margin:0 auto; padding:7px 18px; display:flex; flex-wrap:wrap; gap:4px 18px; justify-content:space-between">
+      <span>{{ openNowLine }} &middot; {{ hoursShort }}</span>
+      <span>{{ address }}</span>
+    </div>
+  </div>
+
+  <header style="border-bottom:1px solid #dbe1e8; background:#fff; position:sticky; top:0; z-index:30">
+    <div style="max-width:1140px; margin:0 auto; padding:11px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px">
+      <div style="display:flex; align-items:center; gap:11px; min-width:0">
+        <div style="flex:none; width:42px; height:42px; border-radius:4px; background:#0b2136; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px; letter-spacing:-0.03em">{{ initials }}</div>
+        <div style="min-width:0">
+          <div style="font-weight:800; font-size:17.5px; letter-spacing:-0.015em; line-height:1.15; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ shopName }}</div>
+          <div style="font-size:12.5px; color:#5c6874; letter-spacing:0.01em">Serving {{ city }} since {{ openedYear }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:20px">
+        <nav style="display:flex; gap:20px; font-size:15px; font-weight:600">
+          <a href="#services" style="color:#1c2229; text-decoration:none" style-hover="color:#0f4c81">Services</a>
+          <a href="#reviews" style="color:#1c2229; text-decoration:none" style-hover="color:#0f4c81">Reviews</a>
+          <a href="#location" style="color:#1c2229; text-decoration:none" style-hover="color:#0f4c81">Hours</a>
+          <a href="#book" style="color:#1c2229; text-decoration:none" style-hover="color:#0f4c81">Book</a>
+        </nav>
+        <a href="{{ phoneHref }}" style="flex:none; text-align:right; text-decoration:none">
+          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#5c6874">Call the shop</div>
+          <div style="font-weight:800; font-size:19px; color:{{ accent }}; letter-spacing:-0.02em; white-space:nowrap">{{ phone }}</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:#0b2136; color:#fff">
+    <div style="max-width:1140px; margin:0 auto; padding:0">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div style="padding:34px 18px 38px">
+          <h1 style="font-weight:800; font-size:clamp(29px,6.4vw,40px); line-height:1.14; letter-spacing:-0.025em; margin:0 0 12px">{{ headline }}</h1>
+          <p style="font-size:17.5px; line-height:1.5; color:#c3d2e1; margin:0 0 14px; max-width:48ch; text-wrap:pretty">{{ tagline }}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px 16px; font-size:15px; color:#ffd25e; font-weight:600; margin-bottom:22px">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9733; {{ rating }} &middot; {{ reviewCount }} Google reviews</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:9px; max-width:420px">
+            <a href="{{ phoneHref }}" style="display:flex; align-items:center; justify-content:center; gap:9px; background:{{ accent }}; color:#fff; text-decoration:none; min-height:60px; border-radius:5px; font-weight:800; font-size:20px; letter-spacing:-0.01em" style-hover="filter:brightness(1.08)">
+              <span style="font-size:18px">&#9742;</span> Call Now &middot; {{ phone }}
+            </a>
+            <div style="display:flex; gap:9px">
+              <a href="#book" style="flex:1 1 0; display:flex; align-items:center; justify-content:center; min-height:52px; border-radius:5px; background:#fff; color:#0b2136; text-decoration:none; font-weight:700; font-size:16.5px" style-hover="background:#e7eef5">Book an Appointment</a>
+              <a href="{{ smsHref }}" style="flex:0 1 auto; display:flex; align-items:center; justify-content:center; padding:0 18px; min-height:52px; border-radius:5px; border:1.5px solid #3c5b77; color:#fff; text-decoration:none; font-weight:700; font-size:16.5px" style-hover="border-color:#fff">Text us</a>
+            </div>
+          </div>
+          <div style="margin-top:16px; font-size:14.5px; color:#9fb4c8">Walk-ins welcome for inspections &middot; After-hours key drop at the front door</div>
+        </div>
+        <div style="min-height:260px; background:#0f2a44">
+          <img src="https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&amp;fit=crop&amp;w=1400&amp;q=70" alt="Cars up on the lifts in the service bay" style="width:100%; height:100%; min-height:260px; object-fit:cover; display:block" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#f2f5f8; border-bottom:1px solid #dbe1e8">
+    <div style="max-width:1140px; margin:0 auto; padding:13px 18px; display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center">
+      <sc-for list="{{ badges }}" as="b" hint-placeholder-count="5">
+        <div style="border:1px solid #c9d3de; background:#fff; border-radius:4px; padding:7px 11px; font-size:13px; font-weight:700; color:#2b3948; letter-spacing:0.01em">{{ b }}</div>
+      </sc-for>
+      <div style="font-size:14px; color:#5c6874; font-weight:600">{{ warranty }} warranty on parts &amp; labor</div>
+    </div>
+  </div>
+
+  <section id="services" style="max-width:1140px; margin:0 auto; padding:44px 18px 8px">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:34px; align-items:start">
+      <div style="grid-column:1 / -1; max-width:62ch">
+        <h2 style="font-weight:800; font-size:clamp(24px,5.2vw,31px); letter-spacing:-0.025em; margin:0 0 6px">What we work on</h2>
+        <p style="color:#4b5663; margin:0; font-size:16.5px">Starting prices below are real. You get a written estimate before anything gets taken apart, and a call if we find something the estimate didn't cover.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1140px; margin:0 auto; padding:18px 18px 44px">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; align-items:start">
+      <div style="border-top:2px solid #1c2229">
+        <sc-for list="{{ servicesA }}" as="s" hint-placeholder-count="3">
+          <div style="border-bottom:1px solid #e3e8ee; padding:15px 0">
+            <div style="display:flex; justify-content:space-between; gap:14px; align-items:baseline">
+              <div style="font-weight:700; font-size:18px">{{ s.name }}</div>
+              <div style="font-weight:700; font-size:15px; color:{{ accent }}; white-space:nowrap">{{ s.price }}</div>
+            </div>
+            <div style="color:#4b5663; font-size:16px; margin-top:3px; text-wrap:pretty">{{ s.line }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border-top:2px solid #1c2229">
+        <sc-for list="{{ servicesB }}" as="s" hint-placeholder-count="3">
+          <div style="border-bottom:1px solid #e3e8ee; padding:15px 0">
+            <div style="display:flex; justify-content:space-between; gap:14px; align-items:baseline">
+              <div style="font-weight:700; font-size:18px">{{ s.name }}</div>
+              <div style="font-weight:700; font-size:15px; color:{{ accent }}; white-space:nowrap">{{ s.price }}</div>
+            </div>
+            <div style="color:#4b5663; font-size:16px; margin-top:3px; text-wrap:pretty">{{ s.line }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; margin-top:26px; align-items:start">
+        <div style="border:2px dashed #c2ccd7; border-radius:6px; padding:18px; background:#fbfcfd">
+          <div style="font-size:11.5px; font-weight:800; letter-spacing:0.11em; text-transform:uppercase; color:{{ accent }}; margin-bottom:7px">This month</div>
+          <div style="font-weight:800; font-size:19px; line-height:1.25; margin-bottom:6px">{{ special.title }}</div>
+          <div style="font-size:15.5px; color:#4b5663">{{ special.body }}</div>
+          <div style="font-size:13px; color:#79838f; margin-top:9px">{{ special.fine }}</div>
+        </div>
+        <div style="border:1px solid #dbe1e8; border-radius:6px; padding:18px">
+          <div style="font-weight:700; font-size:17px; margin-bottom:5px">Big repair? You can pay it out.</div>
+          <div style="font-size:15.5px; color:#4b5663">{{ financing }}</div>
+        </div>
+        <div style="border:1px solid #dbe1e8; border-radius:6px; padding:18px">
+          <div style="font-weight:700; font-size:17px; margin-bottom:5px">While it's here</div>
+          <div style="font-size:15.5px; color:#4b5663">{{ amenities }}</div>
+        </div>
+    </div>
+  </section>
+
+  <section style="background:#f2f5f8; border-top:1px solid #dbe1e8; border-bottom:1px solid #dbe1e8; padding:44px 18px">
+    <div style="max-width:1140px; margin:0 auto; display:flex; flex-wrap:wrap; gap:26px 32px; align-items:flex-start">
+      <div style="flex:0 0 230px; max-width:100%">
+        <div style="aspect-ratio:1/1; max-width:230px; border-radius:6px; overflow:hidden; background:#dae1e9; margin-bottom:12px">
+          <img src="{{ ownerPhoto }}" alt="{{ ownerAlt }}" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block" />
+        </div>
+        <div style="font-weight:700; font-size:17px">{{ owner }}</div>
+        <div style="font-size:14.5px; color:#5c6874">{{ ownerTitle }}</div>
+      </div>
+      <div style="flex:1 1 340px; min-width:0">
+        <h2 style="font-weight:800; font-size:clamp(24px,5.2vw,31px); letter-spacing:-0.025em; margin:0 0 14px">How we do things here</h2>
+        <p style="font-size:17.5px; color:#2b3948; margin:0 0 20px; max-width:60ch; text-wrap:pretty">{{ ownerNote }}</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px">
+          <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
+            <div style="border-left:3px solid {{ accent }}; padding-left:14px">
+              <div style="font-weight:700; font-size:17px; margin-bottom:5px; line-height:1.3">{{ r.title }}</div>
+              <div style="color:#4b5663; font-size:15.5px; text-wrap:pretty">{{ r.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1140px; margin:0 auto; padding:34px 18px 10px">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="3">
+        <figure style="margin:0">
+          <div style="aspect-ratio:4/3; border-radius:6px; overflow:hidden; background:#e3e8ee">
+            <img src="{{ g.src }}" alt="{{ g.cap }}" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block" />
+          </div>
+          <figcaption style="font-size:14px; color:#5c6874; margin-top:7px">{{ g.cap }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="reviews" style="max-width:1140px; margin:0 auto; padding:44px 18px">
+    <div style="display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; margin-bottom:20px">
+      <h2 style="font-weight:800; font-size:clamp(24px,5.2vw,31px); letter-spacing:-0.025em; margin:0">What customers say</h2>
+      <span style="font-size:16px; color:#4b5663"><span style="color:#f1a01a">&#9733;&#9733;&#9733;&#9733;&#9733;</span> {{ rating }} average, {{ reviewCount }} reviews on Google</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(275px,1fr)); gap:18px">
+      <sc-for list="{{ reviews }}" as="rv" hint-placeholder-count="3">
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="color:#f1a01a; font-size:14px; letter-spacing:1px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="font-size:16.5px; color:#1c2229; text-wrap:pretty">{{ rv.text }}</div>
+          <div style="font-size:14px; color:#5c6874">
+            <span style="font-weight:700; color:#1c2229">{{ rv.name }}</span> &middot; {{ rv.vehicle }} &middot; {{ rv.when }}
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <a href="{{ reviewsUrl }}" style="display:inline-block; margin-top:22px; font-weight:700; font-size:16px">Read all {{ reviewCount }} reviews on Google</a>
+  </section>
+
+  <section id="location" style="background:#f2f5f8; border-top:1px solid #dbe1e8; padding:44px 18px">
+    <div style="max-width:1140px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:30px">
+      <div>
+        <h2 style="font-weight:800; font-size:clamp(24px,5.2vw,31px); letter-spacing:-0.025em; margin:0 0 16px">Hours &amp; directions</h2>
+        <div style="font-size:18px; font-weight:700; line-height:1.4">{{ address }}</div>
+        <div style="font-size:15.5px; color:#4b5663; margin-top:4px">{{ crossStreet }}</div>
+        <a href="{{ directionsUrl }}" style="display:inline-flex; align-items:center; gap:7px; margin-top:12px; background:#fff; border:1.5px solid #0f4c81; border-radius:5px; padding:11px 15px; font-weight:700; text-decoration:none; font-size:15.5px" style-hover="background:#e7eef5">Get directions</a>
+        <div style="margin-top:22px">
+          <sc-for list="{{ hours }}" as="h" hint-placeholder-count="3">
+            <div style="display:flex; justify-content:space-between; gap:16px; padding:9px 0; border-bottom:1px solid #e3e8ee; font-size:16px">
+              <span style="color:#4b5663">{{ h.day }}</span>
+              <span style="font-weight:700">{{ h.time }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:18px; font-size:15.5px; color:#4b5663; text-wrap:pretty"><span style="font-weight:700; color:#1c2229">Service area:</span> {{ serviceArea }}</div>
+      </div>
+      <div style="border:1px solid #dbe1e8; border-radius:6px; overflow:hidden; min-height:330px; background:#fff">
+        <iframe src="{{ mapSrc }}" title="Map to the shop" loading="lazy" style="width:100%; height:100%; min-height:330px; border:0; display:block"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="padding:44px 18px; background:#fff">
+    <div style="max-width:1140px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:32px; align-items:start">
+      <div>
+        <h2 style="font-weight:800; font-size:clamp(24px,5.2vw,31px); letter-spacing:-0.025em; margin:0 0 8px">Request an appointment</h2>
+        <p style="color:#4b5663; margin:0 0 14px; font-size:16.5px">Four things and we'll call you back, usually within the hour during shop hours.</p>
+        <p style="color:#4b5663; margin:0; font-size:16.5px">If the car isn't safe to drive, don't fill this out &mdash; call <a href="{{ phoneHref }}" style="font-weight:700">{{ phone }}</a> and we'll talk you through it. We can arrange a tow.</p>
+      </div>
+      <div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid #bdd8c2; background:#f3f9f4; border-radius:6px; padding:20px">
+            <div style="font-weight:800; font-size:19px; margin-bottom:5px">Thanks, {{ sentName }} &mdash; we've got it.</div>
+            <div style="color:#4b5663">We'll call {{ sentPhone }} during shop hours. If you'd rather not wait, call us at {{ phone }}.</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex; flex-direction:column; gap:13px">
+            <label style="display:flex; flex-direction:column; gap:5px; font-size:14px; font-weight:700; color:#3a4552">Name
+              <input name="name" required="required" autoComplete="name" style="background:#fff; border:1px solid #bcc6d1; border-radius:5px; color:#1c2229; min-height:50px; padding:0 13px" style-focus="border-color:#0f4c81; outline:2px solid #cfe0ef" />
+            </label>
+            <label style="display:flex; flex-direction:column; gap:5px; font-size:14px; font-weight:700; color:#3a4552">Phone
+              <input name="phone" type="tel" required="required" autoComplete="tel" style="background:#fff; border:1px solid #bcc6d1; border-radius:5px; color:#1c2229; min-height:50px; padding:0 13px" style-focus="border-color:#0f4c81; outline:2px solid #cfe0ef" />
+            </label>
+            <label style="display:flex; flex-direction:column; gap:5px; font-size:14px; font-weight:700; color:#3a4552">Vehicle
+              <input name="vehicle" placeholder="2015 Honda Civic, 118k miles" style="background:#fff; border:1px solid #bcc6d1; border-radius:5px; color:#1c2229; min-height:50px; padding:0 13px" style-focus="border-color:#0f4c81; outline:2px solid #cfe0ef" />
+            </label>
+            <label style="display:flex; flex-direction:column; gap:5px; font-size:14px; font-weight:700; color:#3a4552">What's it doing?
+              <textarea name="problem" rows="3" placeholder="Grinding noise from the front when I brake" style="background:#fff; border:1px solid #bcc6d1; border-radius:5px; color:#1c2229; padding:11px 13px; resize:vertical" style-focus="border-color:#0f4c81; outline:2px solid #cfe0ef"></textarea>
+            </label>
+            <button type="submit" style="margin-top:4px; background:{{ accent }}; color:#fff; border:0; border-radius:5px; min-height:56px; font-weight:800; font-size:18.5px; cursor:pointer" style-hover="filter:brightness(1.08)">Send request</button>
+            <div style="font-size:13.5px; color:#79838f">We use your number to call about this repair. That's it.</div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0b2136; color:#b9cadb; padding:34px 18px 40px">
+    <div style="max-width:1140px; margin:0 auto">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:26px">
+        <div>
+          <div style="font-weight:800; font-size:18px; color:#fff">{{ shopName }}</div>
+          <div style="font-size:14.5px; margin-top:6px">{{ years }} years in {{ city }}</div>
+          <div style="font-size:14.5px">{{ ownerTitle }}: {{ owner }}</div>
+        </div>
+        <div>
+          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; color:#7e98b2; margin-bottom:6px">Phone</div>
+          <a href="{{ phoneHref }}" style="font-weight:800; font-size:21px; color:#fff; text-decoration:none">{{ phone }}</a>
+          <div style="font-size:14.5px; margin-top:2px"><a href="{{ smsHref }}" style="color:#b9cadb">or text us</a></div>
+        </div>
+        <div>
+          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; color:#7e98b2; margin-bottom:6px">Address</div>
+          <div style="font-size:14.5px; line-height:1.5">{{ address }}</div>
+          <div style="font-size:14.5px; margin-top:2px"><a href="{{ directionsUrl }}" style="color:#b9cadb">Directions</a></div>
+        </div>
+        <div>
+          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; color:#7e98b2; margin-bottom:6px">Hours</div>
+          <sc-for list="{{ hours }}" as="h" hint-placeholder-count="3">
+            <div style="display:flex; justify-content:space-between; gap:14px; max-width:225px; font-size:14.5px">
+              <span>{{ h.day }}</span>
+              <span style="color:#fff">{{ h.time }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border-top:1px solid #1d3c5a; margin-top:26px; padding-top:16px; font-size:13px; color:#8ba4bc; display:flex; flex-wrap:wrap; gap:6px 18px">
+        <span>&copy; {{ thisYear }} {{ shopName }}</span>
+        <span>{{ licenseLine }}</span>
+        <span>ASE certified technicians &middot; {{ warranty }} warranty</span>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; left:0; right:0; bottom:0; z-index:50; display:flex; gap:9px; padding:9px; background:#fffffff2; border-top:1px solid #cfd7e0; backdrop-filter:blur(8px)">
+      <a href="{{ phoneHref }}" style="flex:2 1 0; background:{{ accent }}; color:#fff; text-decoration:none; min-height:54px; border-radius:5px; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:800; font-size:17.5px">
+        <span style="font-size:16px">&#9742;</span> Call {{ phone }}
+      </a>
+      <a href="#book" style="flex:1 1 0; background:#fff; border:1.5px solid #0b2136; color:#0b2136; text-decoration:none; min-height:54px; border-radius:5px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16.5px">Book</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#c02a1e&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#c02a1e&quot;, &quot;#d1601a&quot;, &quot;#0f4c81&quot;, &quot;#1d7a4c&quot;], &quot;section&quot;: &quot;Brand&quot; },
+  &quot;stickyCallBar&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;mobile only&quot;, &quot;options&quot;: [&quot;mobile only&quot;, &quot;always&quot;, &quot;off&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Behavior&quot; }
+}">
+/* =========================================================================
+   BUSINESS DETAILS — edit this block only. Everything else reads from it.
+   (Sample data; swap in the real shop's info.)
+   ========================================================================= */
+const SHOP = {
+  name: "Vaughn Auto Service",
+  initials: "VA",
+  city: "Austin",
+  phone: "(512) 555-0147",
+  address: "1420 E Riverside Dr, Austin, TX 78741",
+  crossStreet: "Between Pleasant Valley and Burton, next to the tire shop. Park in back.",
+  years: 22,
+  rating: "4.8",
+  reviewCount: 127,
+  reviewsUrl: "https://www.google.com/search?q=Vaughn+Auto+Service+Austin+reviews",
+  warranty: "24 month / 24,000 mile",
+  licenseLine: "TX inspection station #TX-0198442",
+  owner: "Rick Vaughn",
+  ownerTitle: "Owner",
+  ownerNote: "I opened this shop in 2004 after eleven years at a Ford dealer, and most of the people who come in now were sent by somebody we already fixed a car for. That only works if we tell people the truth about what their car needs — including when it doesn't need anything. If you've been quoted something you're not sure about, bring the estimate in and I'll look at it with you.",
+  headline: "Brakes, engines and A/C — fixed right, usually the same day",
+  tagline: "Independent shop on East Riverside. ASE certified techs, written estimates before we start, and a text with photos so you can see what we found.",
+  serviceArea: "Austin, Riverside, Montopolis, Del Valle, Sunset Valley, South Congress, Pflugerville and Round Rock. Free tow within 8 miles on repairs over $400.",
+  financing: "Snap Finance and Synchrony Car Care, approved in about 60 seconds at the counter. 6 months interest-free on repairs over $299.",
+  amenities: "Free local shuttle inside 5 miles, loaner car for jobs over two days, and after-hours key drop at the front door.",
+  special: {
+    title: "$25 off any brake job",
+    body: "Mention the website when you call. Includes the inspection and the road test.",
+    fine: "One per vehicle, through the end of the month."
+  },
+  hours: [
+    { day: "Mon – Fri", time: "7:30am – 6:00pm" },
+    { day: "Saturday", time: "8:00am – 2:00pm" },
+    { day: "Sunday", time: "Closed" }
+  ],
+  hoursShort: "Mon–Fri 7:30–6, Sat 8–2",
+  badges: ["ASE Certified", "ASE Master Technician", "NAPA AutoCare Center", "AAA Approved Repair", "BBB Accredited A+"],
+  services: [
+    { name: "Brake repair", price: "from $189", line: "Pads, rotors, calipers and lines. We measure what's left and send you the photo." },
+    { name: "Oil & filter change", price: "from $59", line: "Conventional or full synthetic, with a 20-point look-over. About 30 minutes." },
+    { name: "Check-engine diagnostics", price: "$110", line: "Traced to the actual cause, not a guessed part. Free when we do the repair." },
+    { name: "A/C repair", price: "from $149", line: "Leak test, recharge, compressors and condensers. Same-day on most of it." },
+    { name: "Transmission service", price: "quoted", line: "Fluid and filter, slipping, hard shifts, and full rebuilds with a 3-year warranty." },
+    { name: "Texas state inspection", price: "$25.50", line: "Official station. Walk in, no appointment, usually out in 20 minutes." }
+  ],
+  reasons: [
+    { title: "You see it before we fix it", body: "We text a photo or short video of the worn part with the price next to it and wait for your yes." },
+    { title: "The estimate is the bill", body: "If we find something else under there, we stop and call you before spending another dollar." },
+    { title: "We'll tell you it can wait", body: "Plenty of things are fine another year. You'll hear that from us more than you're used to." }
+  ],
+  reviews: [
+    { name: "Marisol R.", vehicle: "2018 CR-V", when: "2 months ago", text: "Dealer quoted $1,900 for rear brakes and a transmission flush. Vaughn did the brakes for $640 and told me the transmission was fine — sent photos of both." },
+    { name: "Dale W.", vehicle: "2007 F-150", when: "5 months ago", text: "Check engine light nobody else could figure out. They found a cracked vacuum line in about an hour and only charged me for the hour." },
+    { name: "Priya N.", vehicle: "2014 Corolla", when: "3 weeks ago", text: "A/C died in July. In the next morning, leaking condenser, done by 4pm. And somebody actually calls you back when they say they will." }
+  ],
+  // PHOTOS — swap these URLs for the shop's own photos when you have them.
+  // (Free Unsplash stock, no attribution required.)
+  photos: {
+    hero: "https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&fit=crop&w=1400&q=70",
+    heroAlt: "Cars up on the lifts in the service bay",
+    owner: "https://images.unsplash.com/photo-1676018366904-c083ed678e60?auto=format&fit=crop&w=600&q=70",
+    ownerAlt: "Technician working on a car in the shop",
+    gallery: [
+      { src: "https://images.unsplash.com/photo-1702146713858-8e7d1cc29fe8?auto=format&fit=crop&w=800&q=70", cap: "Every car goes on the lift for a look underneath" },
+      { src: "https://images.unsplash.com/photo-1618312980096-873bd19759a0?auto=format&fit=crop&w=800&q=70", cap: "Two bays and off-street parking in back" },
+      { src: "https://images.unsplash.com/photo-1702146713922-613313be011d?auto=format&fit=crop&w=800&q=70", cap: "Brakes, tires and suspension in-house" }
+    ]
+  },
+  // Keyless OpenStreetMap embed — update bbox/marker for a new address.
+  mapSrc: "https://www.openstreetmap.org/export/embed.html?bbox=-97.7440%2C30.2380%2C-97.7080%2C30.2560&layer=mapnik&marker=30.2470%2C-97.7260"
+};
+
+class Component extends DCLogic {
+  state = { sent: null, narrow: true };
+
+  componentDidMount() {
+    this.sync = () => this.setState({ narrow: window.innerWidth < 860 });
+    this.sync();
+    window.addEventListener("resize", this.sync);
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.sync); }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    this.setState({ sent: { name: (f.get("name") || "").trim().split(" ")[0], phone: f.get("phone") } });
+  };
+
+  openNowLine() {
+    const d = new Date(), day = d.getDay(), h = d.getHours() + d.getMinutes() / 60;
+    if (day >= 1 && day <= 5) return h >= 7.5 && h < 18 ? "Open now" : "Closed right now";
+    if (day === 6) return h >= 8 && h < 14 ? "Open now" : "Closed right now";
+    return "Closed Sunday";
+  }
+
+  renderVals() {
+    const s = this.state.sent, digits = SHOP.phone.replace(/\D/g, "");
+    return {
+      accent: this.props.accentColor ?? "#c02a1e",
+      shopName: SHOP.name,
+      initials: SHOP.initials,
+      city: SHOP.city,
+      phone: SHOP.phone,
+      phoneHref: "tel:+1" + digits,
+      smsHref: "sms:+1" + digits,
+      address: SHOP.address,
+      crossStreet: SHOP.crossStreet,
+      directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(SHOP.address),
+      reviewsUrl: SHOP.reviewsUrl,
+      years: SHOP.years,
+      openedYear: new Date().getFullYear() - SHOP.years,
+      thisYear: new Date().getFullYear(),
+      rating: SHOP.rating,
+      reviewCount: SHOP.reviewCount,
+      warranty: SHOP.warranty,
+      licenseLine: SHOP.licenseLine,
+      owner: SHOP.owner,
+      ownerFirst: SHOP.owner.split(" ")[0],
+      ownerTitle: SHOP.ownerTitle,
+      ownerNote: SHOP.ownerNote,
+      headline: SHOP.headline,
+      tagline: SHOP.tagline,
+      serviceArea: SHOP.serviceArea,
+      financing: SHOP.financing,
+      amenities: SHOP.amenities,
+      special: SHOP.special,
+      hours: SHOP.hours,
+      hoursShort: SHOP.hoursShort,
+      badges: SHOP.badges,
+      servicesA: SHOP.services.slice(0, 3),
+      servicesB: SHOP.services.slice(3),
+      reasons: SHOP.reasons,
+      reviews: SHOP.reviews,
+      mapSrc: SHOP.mapSrc,
+      heroPhoto: SHOP.photos.hero,
+      heroAlt: SHOP.photos.heroAlt,
+      ownerPhoto: SHOP.photos.owner,
+      ownerAlt: SHOP.photos.ownerAlt,
+      gallery: SHOP.photos.gallery,
+      openNowLine: this.openNowLine(),
+      onSubmit: this.onSubmit,
+      sent: !!s,
+      notSent: !s,
+      sentName: s ? s.name : "",
+      sentPhone: s ? s.phone : "",
+      showBar: (this.props.stickyCallBar ?? "mobile only") === "always" ? true
+        : (this.props.stickyCallBar ?? "mobile only") === "off" ? false : this.state.narrow
+    };
+  }
+}
+</script>
+</body>
+</html>
