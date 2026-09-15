@@ -1,0 +1,12 @@
+{
+  "_comment": "Only the two brand colours are set. The fourteen shades layered on the dark surface are derived from color.dark by the token system; run `npm run check` to see them pass contrast.",
+  "color": {
+    "dark": "#12261f",
+    "accent": "#16653f",
+    "link": "#1b5e4a",
+    "linkHover": "#0f3f31",
+    "star": "#c77f12"
+  },
+  "radius": { "sm": "2px", "md": "3px", "lg": "3px" },
+  "layout": { "maxWidth": "1180px" }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "shopfront",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "White-label multi-tenant site platform for independent auto repair shops.",
+  "engines": { "node": ">=18" },
+  "bin": { "shopfront": "./platform/cli.js" },
+  "scripts": {
+    "build": "node platform/cli.js build",
+    "dev": "node platform/cli.js serve",
+    "check": "node platform/cli.js check",
+    "new": "node platform/cli.js new",
+    "test": "node platform/cli.js check"
+  }
+}

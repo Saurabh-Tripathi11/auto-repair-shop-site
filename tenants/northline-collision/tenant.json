@@ -1,0 +1,160 @@
+{
+  "domains": ["northlinecollision.com", "www.northlinecollision.com"],
+
+  "layout": [
+    "utility-strip",
+    "header",
+    "hero",
+    "trust-bar",
+    "insurance-claims",
+    "services",
+    "specials",
+    "reviews",
+    "owner",
+    "gallery",
+    "location",
+    "booking",
+    "footer",
+    "call-bar"
+  ],
+
+  "business": {
+    "name": "Northline Collision",
+    "initials": "NC",
+    "city": "Portland",
+    "region": "OR",
+    "phone": "(503) 555-0182",
+    "timezone": "America/Los_Angeles",
+    "address": {
+      "street": "3388 NE Columbia Blvd",
+      "city": "Portland",
+      "region": "OR",
+      "postalCode": "97211",
+      "country": "US"
+    },
+    "crossStreet": "Two lights east of 33rd, in the grey building behind the fuel station. Estimates park along the fence.",
+    "openedYear": 1998,
+    "licenseLine": "OR body shop certificate #BS-114772",
+    "warranty": "Lifetime workmanship",
+    "serviceArea": "Portland, Vancouver, Gresham, Beaverton, Milwaukie and Hillsboro. We tow in from anywhere inside 20 miles on an insurance job.",
+    "reviewsUrl": "https://www.google.com/search?q=Northline+Collision+Portland+reviews"
+  },
+
+  "hours": {
+    "short": "Mon–Fri 7:30–5:30",
+    "showOpenNow": true,
+    "rows": [
+      { "day": "Mon – Fri", "time": "7:30am – 5:30pm" },
+      { "day": "Saturday", "time": "By appointment" },
+      { "day": "Sunday", "time": "Closed" }
+    ],
+    "schema": ["Mo-Fr 07:30-17:30"]
+  },
+
+  "rating": { "value": "4.9", "count": 214 },
+
+  "badges": ["I-CAR Gold Class", "ASE Certified", "Tesla Approved Aluminium", "PPG Certified Refinish"],
+
+  "services": [
+    { "name": "Collision repair", "price": "insurance or quoted", "line": "Frame, panel and structural work on a laser measuring bench. We photograph every stage." },
+    { "name": "Paint & refinish", "price": "from $690", "line": "Computer-matched to your VIN, blended into the adjacent panels so the repair disappears." },
+    { "name": "Paintless dent removal", "price": "from $145", "line": "Door dings and hail. No filler, no paint, usually back the same afternoon." },
+    { "name": "Bumper repair", "price": "from $380", "line": "Cracks, scuffs and tab repairs. Cheaper than replacement on most plastic covers." },
+    { "name": "ADAS recalibration", "price": "$275", "line": "Required after most windshield and bumper work. Done in-house, documented for your file." },
+    { "name": "Hail damage", "price": "insurance", "line": "We handle the whole claim, including the supplement your adjuster missed." }
+  ],
+
+  "special": {
+    "eyebrow": "Right now",
+    "title": "Free estimate while you wait",
+    "body": "Drive in before 3pm on a weekday and you leave with a written estimate and photos, not a callback.",
+    "fine": "About 25 minutes for most vehicles."
+  },
+
+  "cards": [
+    { "title": "We bill your insurer directly", "body": "You pay the deductible, we invoice the carrier. No cheque to chase and no paperwork to forward." },
+    { "title": "While it's here", "body": "Enterprise pickup from our lot, a loaner for jobs over three days, and a text with photos at every stage." }
+  ],
+
+  "owner": {
+    "name": "Dana Okonkwo",
+    "title": "Owner, I-CAR Platinum",
+    "note": "My father opened this shop in 1998 and I did my apprenticeship in the paint booth out back. What I tell people now is what he told them: your insurer can recommend a shop, but they cannot make you use one. If the estimate you were handed misses something, bring it here and I will write up what it actually takes, line by line, and argue it with the adjuster myself.",
+    "photo": "",
+    "photoAlt": ""
+  },
+
+  "reasons": [
+    { "title": "You choose the shop, not the carrier", "body": "Oregon law is on your side on this. We will say it plainly and put it in writing if you need it." },
+    { "title": "Every stage, photographed", "body": "Tear-down, frame readings, primer, colour, reassembly. The file follows the car and it is yours." },
+    { "title": "Lifetime on our workmanship", "body": "For as long as you own the car. If the paint lifts in four years, it comes back and we redo it." }
+  ],
+
+  "reviews": [
+    { "name": "Tomas L.", "vehicle": "2021 Model 3", "when": "6 weeks ago", "text": "Insurer pushed me hard toward their own shop. Northline took it, found $2,400 of structural work the first estimate missed, and got the supplement approved. Car measures straight." },
+    { "name": "Rhea B.", "vehicle": "2016 Outback", "when": "4 months ago", "text": "Hail wrote off half the panels. They handled the claim, the rental, and had it back in nine days. The colour match on a ten-year-old car is genuinely invisible." },
+    { "name": "Marcus D.", "vehicle": "2019 Transit", "when": "2 months ago", "text": "Work van, so every day down costs me money. They sourced the door in a day and got me back on the road Thursday. Told me the second dent could wait rather than selling me on it." }
+  ],
+
+  "photos": {
+    "hero": "",
+    "heroAlt": "",
+    "gallery": []
+  },
+
+  "map": {
+    "bbox": "-122.6480%2C45.5680%2C-122.6080%2C45.5860",
+    "marker": "45.5770%2C-122.6280"
+  },
+
+  "copy": {
+    "headline": "Collision and paint work that measures straight, and a claim we argue for you",
+    "tagline": "I-CAR Gold Class body shop on Columbia Boulevard. We bill your insurer direct, photograph every stage, and warranty the workmanship for as long as you own the car.",
+    "heroFinePrint": "Walk-in estimates until 3pm weekdays · Free tow inside 20 miles on an insurance job",
+    "servicesHeading": "What we take in",
+    "servicesLede": "Collision work is quoted off a tear-down, not a glance. These are honest starting numbers for the jobs we can price before we look.",
+    "ownerHeading": "How a claim actually goes here",
+    "reviewsHeading": "What customers say",
+    "locationHeading": "Hours & directions",
+    "bookingHeading": "Get an estimate",
+    "bookingLede": "Four things and we'll call you back, usually the same morning.",
+    "bookingEscape": "If the car isn't drivable, don't fill this out — call",
+    "bookingEscapeTail": "and we'll get a flatbed to you.",
+    "reviewsLink": "Read all 214 reviews on Google",
+    "openNow": "Open now",
+    "closedNow": "Closed right now",
+    "closedToday": "Closed today"
+  },
+
+  "forms": {
+    "endpoint": "https://northlinecollision.com/api/callback",
+    "method": "post",
+    "fields": [
+      { "name": "name", "label": "Name", "required": true, "autocomplete": "name" },
+      { "name": "phone", "label": "Phone", "type": "tel", "required": true, "autocomplete": "tel" },
+      { "name": "vehicle", "label": "Vehicle", "placeholder": "2019 Subaru Outback, 74k miles" },
+      { "name": "insurer", "label": "Insurer and claim number", "placeholder": "State Farm, 24-8841-XC — or leave blank if you're paying yourself" },
+      { "name": "problem", "label": "What happened?", "type": "textarea", "rows": 3, "placeholder": "Rear-ended at a light, bumper and tailgate, car still drives" }
+    ]
+  },
+
+  "seo": {
+    "description": "I-CAR Gold Class collision repair and paint in Portland, OR. Direct insurance billing, ADAS recalibration, lifetime workmanship warranty. Call (503) 555-0182.",
+    "canonical": "https://northlinecollision.com/"
+  },
+
+  "extra": {
+    "insurance": {
+      "heading": "We work with every major carrier",
+      "lede": "You are not required to use the shop your insurer names. Bring us the claim number and we take it from there.",
+      "carriers": ["State Farm", "GEICO", "Progressive", "Allstate", "USAA", "Farmers", "Liberty Mutual", "Travelers"],
+      "steps": [
+        { "title": "Call us with the claim number", "body": "Or drive in. We photograph the damage and open a file the same day." },
+        { "title": "We write the real estimate", "body": "Off a tear-down, not a walk-around. Supplements go to the adjuster with photos attached." },
+        { "title": "You pay the deductible, we bill the rest", "body": "Direct to the carrier. You do not front the repair and wait for a cheque." }
+      ],
+      "note": "Not an insurance company and not acting as your agent. We write repair estimates and negotiate them on the repair's merits."
+    },
+    "analytics": { "plausibleDomain": "northlinecollision.com" }
+  }
+}

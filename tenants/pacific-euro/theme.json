@@ -1,0 +1,35 @@
+{
+  "_comment": "The handoff suggests #d1601a as an orange accent alternative. `npm run check` rates it 3.89:1 on white, below the floor, so this is the nearest orange that passes at 5.82:1.",
+  "color": {
+    "dark": "#16202b",
+    "accent": "#a8481a",
+    "link": "#2b4c7e",
+    "linkHover": "#1b3557",
+    "wash": "#f4f5f6",
+    "line": "#dfe2e6",
+    "line2": "#e6e9ec"
+  },
+  "font": {
+    "family": "IBM Plex Sans",
+    "fallback": "Helvetica, Arial, sans-serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ]
+  },
+  "type": {
+    "tracking": "-0.02em",
+    "boldWeight": 700
+  },
+  "radius": {
+    "sm": "0px",
+    "md": "0px",
+    "lg": "0px"
+  },
+  "layout": {
+    "maxWidth": "1080px",
+    "navBreakpoint": "900px"
+  }
+}
