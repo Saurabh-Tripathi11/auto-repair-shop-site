@@ -54,6 +54,24 @@ async function importFresh(file) {
   return mod.default ?? mod;
 }
 
+/**
+ * Register every section module in a directory, re-imported fresh. `index.js`
+ * is skipped -- it is the barrel, not a section.
+ *
+ * Used for a tenant's own sections/, and by the dev server for the platform's,
+ * so editing either shows up on reload without a restart.
+ */
+export async function loadSectionsFrom(dir, origin, registry) {
+  if (!existsSync(dir)) return registry;
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.js') && f !== 'index.js').sort();
+  for (const file of files) {
+    const section = await importFresh(path.join(dir, file));
+    const id = section.id || path.basename(file, '.js');
+    registry.register({ ...section, id }, `${origin}/${file}`);
+  }
+  return registry;
+}
+
 export class FileTenantStore {
   constructor(root, { baseRegistry } = {}) {
     this.root = root;
@@ -86,15 +104,7 @@ export class FileTenantStore {
     const theme = resolveTheme(themeInput);
 
     const registry = this.baseRegistry.clone();
-    const sectionsDir = path.join(dir, 'sections');
-    if (existsSync(sectionsDir)) {
-      const files = (await readdir(sectionsDir)).filter((f) => f.endsWith('.js')).sort();
-      for (const file of files) {
-        const section = await importFresh(path.join(sectionsDir, file));
-        const id = section.id || path.basename(file, '.js');
-        registry.register({ ...section, id }, `tenants/${slug}/sections/${file}`);
-      }
-    }
+    await loadSectionsFrom(path.join(dir, 'sections'), `tenants/${slug}/sections`, registry);
 
     const hooksFile = path.join(dir, 'hooks.js');
     const hooks = existsSync(hooksFile) ? await importFresh(hooksFile) : {};

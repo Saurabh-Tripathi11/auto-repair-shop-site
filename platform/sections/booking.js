@@ -17,6 +17,9 @@ export default {
     return `
   .booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 32px; align-items: start; }
   .booking-form { display: flex; flex-direction: column; gap: 13px; }
+  /* An author display rule beats the UA's [hidden] rule, so the confirmation
+     swap needs this or the form stays on screen underneath it. */
+  .booking-form[hidden] { display: none; }
   .booking-form label { display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 700; color: var(--label-ink); }
   .booking-form input, .booking-form textarea {
     font-family: inherit; font-size: 16px; background: var(--surface); color: var(--ink);

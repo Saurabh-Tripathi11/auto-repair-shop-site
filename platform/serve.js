@@ -20,7 +20,22 @@ import path from 'node:path';
 
 import { renderPage } from './core/render.js';
 import { createStore } from './build.js';
+import { FileTenantStore, loadSectionsFrom } from './core/tenant.js';
+import { SectionRegistry } from './core/registry.js';
 import { esc } from './core/html.js';
+import { fileURLToPath } from 'node:url';
+
+const PLATFORM_DIR = path.dirname(fileURLToPath(import.meta.url));
+
+/**
+ * A store whose platform sections are re-read too, not just the tenant's.
+ * Editing platform/sections/hero.js should show up on reload like everything
+ * else; the build uses the statically imported registry instead.
+ */
+async function devStore(root) {
+  const base = await loadSectionsFrom(path.join(PLATFORM_DIR, 'sections'), 'platform', new SectionRegistry());
+  return new FileTenantStore(path.join(root, 'tenants'), { baseRegistry: base });
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -73,13 +88,12 @@ function serveFile(res, file) {
 }
 
 export function serve(root, { port = 4000, host = '0.0.0.0', log = console.log } = {}) {
-  const store = createStore(root);
-
   const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
     let pathname = decodeURIComponent(url.pathname);
 
     try {
+      const store = await devStore(root);
       // Path-prefix form: /t/<slug>/rest
       let slug = null;
       const prefixed = pathname.match(/^\/t\/([^/]+)(\/.*)?$/);
@@ -134,7 +148,7 @@ export function serve(root, { port = 4000, host = '0.0.0.0', log = console.log }
   });
 
   server.listen(port, host, async () => {
-    const slugs = await store.list();
+    const slugs = await createStore(root).list();
     log(`\n  shopfront dev  http://localhost:${port}\n`);
     for (const slug of slugs) {
       log(`    http://${slug}.localhost:${port}/   ·   http://localhost:${port}/t/${slug}/`);
