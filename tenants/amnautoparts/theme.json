@@ -1,0 +1,11 @@
+{
+  "_comment": "Industrial charcoal + safety-amber, distinct from the three repair-shop tenants. Checked against WCAG AA before committing: accent is 5.00:1 on white, the floor is 4.5:1.",
+  "color": {
+    "dark": "#1c1c1c",
+    "accent": "#a85c0d",
+    "link": "#1f5f8b",
+    "linkHover": "#163f5c",
+    "star": "#c97a12"
+  },
+  "radius": { "sm": "3px", "md": "4px", "lg": "5px" }
+}

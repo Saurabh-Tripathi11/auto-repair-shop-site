@@ -13,6 +13,7 @@
 import { contrast } from './core/color.js';
 import { renderPage } from './core/render.js';
 import { createStore } from './build.js';
+import { esc } from './core/html.js';
 
 const AA = 4.5;
 
@@ -51,8 +52,9 @@ function contrastChecks(theme, report) {
   }
 }
 
-function contentChecks(config, data, report) {
+function contentChecks(config, data, layout, report) {
   const { business } = config;
+  const usesSection = (id) => layout.some((entry) => entry.use === id);
 
   if (!config.hours.schema.length) {
     report.warn('hours.schema is empty — JSON-LD ships without openingHours, so Google will not show hours');
@@ -64,7 +66,12 @@ function contentChecks(config, data, report) {
     report.warn('business.licenseLine is empty — the inspection licence number is a checkable credential worth showing');
   }
   if (!config.reviews.length) report.warn('no reviews');
-  if (!config.services.length) report.error('no services — the price list is the point of the page');
+  // Only the stock `services` section demands a priced line-item list. A
+  // tenant whose layout replaces it with its own section (a product catalog,
+  // say) is opting out of that shape entirely, not failing to fill it in.
+  if (usesSection('services') && !config.services.length) {
+    report.error('no services — the price list is the point of the page');
+  }
   if (config.rating.value && !config.reviews.length) {
     report.warn('rating is set but no reviews are shown — Google penalises markup ratings that are not on the page');
   }
@@ -93,8 +100,11 @@ function contentChecks(config, data, report) {
 }
 
 function outputChecks(html, data, config, report) {
-  if (!html.includes(`href="tel:${data.phoneE164}"`)) {
-    report.error('rendered page has no tel: link to the shop number');
+  // `data.phoneHref` is read post-hook: a tenant whose hooks.js redirects it
+  // to WhatsApp (or anything else) is checked against that, not against a
+  // tel: link no section of theirs still emits.
+  if (!data.phoneHref || !html.includes(`href="${esc(data.phoneHref)}"`)) {
+    report.error(`rendered page has no link to the primary contact method (${data.phoneHref || 'data.phoneHref is empty'})`);
   }
   const h1s = html.match(/<h1[\s>]/g) || [];
   if (h1s.length !== 1) report.error(`page has ${h1s.length} <h1> elements, expected exactly 1`);
@@ -192,7 +202,7 @@ export async function check(root, { only = null, log = console.log } = {}) {
         const { html, data, layout, warnings: renderWarnings } = renderPage(tenant);
         for (const warning of renderWarnings) report.warn(warning);
         layoutChecks(tenant.config, layout, report);
-        contentChecks(tenant.config, data, report);
+        contentChecks(tenant.config, data, layout, report);
         outputChecks(html, data, tenant.config, report);
       } catch (error) {
         report.error(`render failed: ${error.message}`);
