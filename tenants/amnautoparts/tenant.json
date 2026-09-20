@@ -1,5 +1,5 @@
 {
-  "_todo": "PLACEHOLDER TENANT. business.city and business.address are not real -- fill in before this goes live. See README's launch checklist pattern; everything else here is taken directly from the amnautoparts bio.",
+  "_todo": "PLACEHOLDER TENANT. business.city and business.address are not real -- fill in before this goes live. The hero photograph is stock and generic; replace it with a photo of the actual workshop or product line. Everything else is taken from the amnautoparts bio.",
 
   "domains": [],
 
@@ -9,8 +9,9 @@
     "hero",
     "trust-bar",
     "product-categories",
-    "specials",
     "owner",
+    "photo-band",
+    "how-to-order",
     "booking",
     "footer",
     "call-bar"
@@ -36,29 +37,26 @@
   "hours": { "short": "Ships worldwide", "rows": [], "schema": [] },
   "rating": { "value": "", "count": 0 },
 
-  "badges": ["Manufacturer", "Intl Supplier", "Worldwide Shipping"],
-
+  "badges": [],
   "services": [],
   "reviews": [],
 
-  "owner": {
-    "note": "",
-    "photo": ""
-  },
+  "owner": { "note": "", "photo": "" },
 
   "reasons": [
-    { "title": "Manufacturer, not a reseller", "body": "We make the valve seal tools and O-ring kits ourselves, so pricing and lead times come straight from the factory." },
-    { "title": "Ships worldwide", "body": "International supplier — every order ships worldwide, not just domestically." },
-    { "title": "A real reply on WhatsApp", "body": "DM for the catalog and price and you get an answer from us, not a contact-form queue." }
+    { "title": "Manufacturer, not a reseller", "body": "We make the valve seal tools and O-ring kits ourselves, so pricing and lead times come straight from the factory rather than through a middleman." },
+    { "title": "Built for international buyers", "body": "We ship worldwide as a matter of course, and quote landed cost and lead time up front rather than after you commit." },
+    { "title": "A person, on WhatsApp", "body": "Send a part number, a photo or a rough description and you get an answer from someone who knows the catalog — not a ticket number." }
   ],
 
   "special": { "title": "" },
-  "cards": [
-    { "title": "🔧 Auto Repair Tools & Auto Parts", "body": "Valve seal tools and O-ring kits, made in-house." },
-    { "title": "🌎 Worldwide Shipping", "body": "International supplier — we ship to you, wherever you are." }
-  ],
+  "cards": [],
 
-  "photos": { "hero": "", "heroAlt": "", "gallery": [] },
+  "photos": {
+    "hero": "https://images.unsplash.com/photo-1618312980096-873bd19759a0?auto=format&fit=crop&w=1600&q=70",
+    "heroAlt": "",
+    "gallery": []
+  },
 
   "nav": [
     { "label": "Products", "href": "#catalog" },
@@ -68,37 +66,80 @@
   "copy": {
     "headerSubtitle": "Automotive Repair Tools | Auto Parts",
     "callEyebrow": "WhatsApp us",
-    "headline": "Valve seal tools and O-ring kits, direct from the manufacturer",
-    "tagline": "Manufacturer and international supplier of automotive repair tools and auto parts. Worldwide shipping — DM for the catalog and price.",
-    "heroProof": "20k+ followers worldwide",
+
+    "heroEyebrow": "Manufacturer · International supplier",
+    "headline": "Valve seal tools and O-ring kits, straight from the factory",
+    "tagline": "We manufacture automotive repair tools and auto parts and supply them worldwide. Send us a part number or a photo on WhatsApp and we'll come back with the catalog, pricing and lead time.",
     "callNow": "Chat on WhatsApp",
-    "bookCta": "View Products",
-    "trustNote": "",
+    "bookCta": "See what we make",
+
     "categoriesHeading": "What we make",
-    "categoriesLede": "Two product lines, manufactured in-house.",
-    "categoriesCtaLede": "Full catalog and pricing on request —",
-    "categoriesCtaLink": "DM us on WhatsApp",
-    "ownerHeading": "Why source from us",
+    "categoriesLede": "Two product lines, manufactured in-house. Diagrams below are illustrative — the catalog carries the full size range.",
+    "categoriesCtaLede": "Sizes, MOQs and pricing are quoted per order —",
+    "categoriesCtaLink": "message us for the catalog",
+
+    "ownerHeading": "Why buyers source from us",
+
+    "orderHeading": "How ordering works",
+    "orderLede": "No account to create and no quote form to fill in. The whole process runs in one WhatsApp thread.",
+
     "contactHeading": "Get the catalog & pricing",
-    "contactLede": "Send us the part or category you're after and we'll reply with pricing, MOQs and shipping — same channel, no forms.",
+    "contactLede": "Tell us the part, the size range and the quantity you're after. We'll reply with pricing, MOQ and shipping to your country.",
     "contactCta": "Chat on WhatsApp",
+    "contactNumberLabel": "WhatsApp",
+
     "footerPhoneLabel": "WhatsApp",
     "footerSms": "or message us",
-    "footerCredentials": "Manufacturer · Worldwide Shipping",
+    "footerCredentials": "Manufacturer · Worldwide shipping",
     "barCall": "Chat",
     "barBook": "Products"
   },
 
   "extra": {
+    "heroProof": [
+      { "value": "20k+", "label": "followers worldwide" },
+      { "value": "Worldwide", "label": "shipping on every order" },
+      { "value": "Factory-direct", "label": "pricing and lead times" }
+    ],
+
+    "stats": [
+      { "value": "Manufacturer", "label": "We make what we sell — not a trading reseller" },
+      { "value": "Worldwide", "label": "International supplier, shipping to any market" },
+      { "value": "2 product lines", "label": "Valve seal tools and O-ring kits, made in-house" },
+      { "value": "20k+", "label": "Followers across our channels" }
+    ],
+
+    "photoBand": [
+      "https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&fit=crop&w=900&q=70",
+      "https://images.unsplash.com/photo-1702146713858-8e7d1cc29fe8?auto=format&fit=crop&w=900&q=70",
+      "https://images.unsplash.com/photo-1702146713922-613313be011d?auto=format&fit=crop&w=900&q=70"
+    ],
+
     "categories": [
-      { "name": "Valve Seal Tools", "line": "Installation and removal tools for valve stem seals." },
-      { "name": "O-Ring Kits", "line": "Assorted O-ring kits for automotive repair." }
+      {
+        "name": "Valve Seal Tools",
+        "art": "valveseal",
+        "line": "Installation and removal tools for valve stem seals, sized for common engine families.",
+        "note": "Sold individually or as a workshop set."
+      },
+      {
+        "name": "O-Ring Kits",
+        "art": "oring",
+        "line": "Assorted O-ring kits for automotive repair, sorted by diameter and section in a labelled case.",
+        "note": "Assortment contents quoted per order."
+      }
+    ],
+
+    "orderSteps": [
+      { "title": "Send us what you need", "body": "A part number, a photo of the old part, or just the engine and the job. Whatever you have is enough to start." },
+      { "title": "We quote it", "body": "Pricing, minimum order quantity and lead time, plus shipping to your country — in the same thread, not a follow-up email." },
+      { "title": "We ship it", "body": "Confirm the order and it goes out. Worldwide shipping, with tracking sent back to you on WhatsApp." }
     ]
   },
 
   "seo": {
     "title": "amnautoparts — Automotive Repair Tools & Auto Parts Manufacturer",
-    "description": "amnautoparts — manufacturer and international supplier of automotive repair tools and auto parts. Valve seal tools, O-ring kits, worldwide shipping. DM on WhatsApp for the catalog and price.",
+    "description": "amnautoparts — manufacturer and international supplier of automotive repair tools and auto parts. Valve seal tools, O-ring kits, worldwide shipping. Message us on WhatsApp for the catalog and pricing.",
     "schemaType": "Organization",
     "canonical": ""
   }

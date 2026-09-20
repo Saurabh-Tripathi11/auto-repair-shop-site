@@ -4,55 +4,90 @@ import { copyFor } from '../../../platform/core/copy.js';
 /**
  * amnautoparts' hero, replacing the platform's.
  *
- * The stock hero's second and third buttons are "Book an Appointment" and
- * "Text us" -- neither makes sense for a parts manufacturer with no
- * storefront and one channel (WhatsApp). This keeps the layout shape (call
- * button, secondary row, fine print) but reduces to a single WhatsApp CTA
- * plus a same-page link to the product categories, and swaps the follower
- * count in for a star rating this tenant doesn't have.
+ * Full-bleed photograph behind a dark scrim rather than the platform's
+ * side-by-side text/image grid -- a supplier's hero is a single statement,
+ * not a split. The photo is a CSS `background-image`, not an `<img>`:
+ * a background that fails to load leaves the dark panel underneath it
+ * looking deliberate, where a broken `<img>` leaves a broken-image icon in
+ * the middle of the page.
+ *
+ * Everything sits on `--dark` regardless, so the type contrast is the same
+ * whether or not the photograph arrives.
  */
 export default {
   id: 'hero',
 
-  css() {
+  css({ config }) {
+    const photo = config.photos.hero;
     return `
-  .hero { background: var(--dark); color: #fff; }
-  .hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-  .hero-text { padding: 34px var(--gutter) 38px; }
-  .hero--nomedia .hero-text { max-width: 640px; }
-  .hero-lede { font-size: 17.5px; line-height: 1.5; color: var(--on-dark); margin: 0 0 14px; max-width: 48ch; text-wrap: pretty; }
-  .hero-proof { font-size: 15px; color: var(--star-on-dark); font-weight: 600; margin-bottom: 22px; }
-  .hero-actions { display: flex; flex-direction: column; gap: 9px; max-width: 420px; }
-  .hero-row { display: flex; gap: 9px; }
-  .hero-fine { margin-top: 16px; font-size: 14.5px; color: var(--on-dark-faint); }
-  .hero-media { min-height: 260px; background: var(--dark-tint); }
-  .hero-media img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; }`;
+  .hero {
+    position: relative;
+    background: var(--dark);
+    color: #fff;
+    overflow: hidden;
+  }
+  ${photo ? `.hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("${photo}");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+  }
+  /* Opaque behind the column the type sits in, clearing toward the right so
+     the photograph is actually visible rather than a texture under a wash. */
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg,
+      var(--dark) 0%,
+      rgba(28,28,28,0.92) 34%,
+      rgba(28,28,28,0.55) 66%,
+      rgba(28,28,28,0.22) 100%);
+  }` : ''}
+  .hero > .wrap { position: relative; z-index: 1; padding-top: 68px; padding-bottom: 72px; }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--star-on-dark); margin-bottom: 18px;
+  }
+  .hero h1 { max-width: 17ch; font-size: clamp(34px, 5.6vw, 52px); line-height: 1.06; }
+  .hero-lede {
+    font-size: 18px; line-height: 1.55; color: var(--on-dark);
+    margin: 18px 0 0; max-width: 52ch; text-wrap: pretty;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .hero-actions .btn { flex: 0 1 auto; padding: 0 26px; }
+  .hero-actions .btn-book {
+    background: transparent; border: 1.5px solid var(--dark-border); color: #fff;
+  }
+  .hero-actions .btn-book:hover { background: rgba(255,255,255,0.08); border-color: #fff; color: #fff; }
+  .hero-proof {
+    display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: center;
+    margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--dark-rule);
+    font-size: 14.5px; color: var(--on-dark-muted);
+  }
+  .hero-proof b { color: #fff; font-weight: 700; }
+  @media (min-width: 860px) {
+    .hero > .wrap { padding-top: 92px; padding-bottom: 96px; }
+  }`;
   },
 
-  render({ config, data, options }) {
+  render({ config, data }) {
     const text = copyFor(config);
-    const photo = options.photo ?? config.photos.hero;
-    const proof = text('heroProof', '');
+    const proof = config.extra?.heroProof || [];
 
-    return html`<section class="hero${photo ? '' : ' hero--nomedia'}">
-  <div class="wrap" style="padding:0">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <h1 style="margin-bottom:12px">${text('headline', '')}</h1>
-        <p class="hero-lede">${text('tagline', '')}</p>
-        ${proof ? html`<div class="hero-proof">${proof}</div>` : ''}
-        <div class="hero-actions">
-          <a class="btn btn-call" href="${data.phoneHref}" data-place="hero"><span aria-hidden="true" style="font-size:18px">&#128172;</span> ${text('callNow', 'Chat on WhatsApp')}</a>
-          <div class="hero-row">
-            <a class="btn btn-book" href="#catalog">${text('bookCta', 'View Products')}</a>
-          </div>
-        </div>
-        ${text('heroFinePrint', '') ? html`<div class="hero-fine">${text('heroFinePrint', '')}</div>` : ''}
-      </div>
-      ${photo ? html`<div class="hero-media">
-        <img src="${photo}" alt="${config.photos.heroAlt || ''}" fetchpriority="high">
-      </div>` : ''}
+    return html`<section class="hero">
+  <div class="wrap">
+    ${text('heroEyebrow', '') ? html`<div class="hero-eyebrow">${text('heroEyebrow', '')}</div>` : ''}
+    <h1>${text('headline', '')}</h1>
+    <p class="hero-lede">${text('tagline', '')}</p>
+    <div class="hero-actions">
+      <a class="btn btn-call" href="${data.phoneHref}" data-place="hero"><span aria-hidden="true" style="font-size:18px">&#128172;</span> ${text('callNow', 'Chat on WhatsApp')}</a>
+      <a class="btn btn-book" href="#catalog">${text('bookCta', 'View Products')}</a>
     </div>
+    ${proof.length ? html`<div class="hero-proof">
+      ${proof.map((item) => html`<span><b>${item.value}</b> ${item.label}</span>`)}
+    </div>` : ''}
   </div>
 </section>`;
   },
